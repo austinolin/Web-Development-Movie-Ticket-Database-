@@ -1,0 +1,107 @@
+body {
+	padding-top: 50px;
+}
+
+.top_margin {
+	margin-top: 10px;
+}
+
+.text_left {
+	text-align: left;
+}
+
+.text_justified {
+	text-align: justify;
+}
+
+.sidebar {
+	display: none;
+}
+
+.subtitle {
+	padding: 10px;
+}
+
+.page-header {
+	padding: 20px;
+}
+
+
+th, td, tr {
+	border: 1px solid black;
+} 
+
+.form-field-section {
+	border: 1px solid black;
+}
+
+
+
+.form-field-section {
+	padding: 20px;
+}
+
+.form-field-entry {
+	margin-bottom: 20px;
+}
+
+.add-new-field {
+	border-top: 1px solid black;
+	padding-top:20px;
+}
+
+.bottom_choice {
+	padding-bottom: 20px;
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+    color: #555;
+    cursor: default;
+    background-color: #fff;
+    border: 1px solid black;
+    border-bottom-color: transparent;
+}
+
+@media (min-width: 768px) {
+	.sidebar {
+		position: fixed;
+		top: 51px;
+		bottom: 0;
+		left: 0;
+		z-index: 1000;
+		display: block;
+		padding-top: 0px;
+		padding-left: 0px;
+		padding-right: 0px;
+		overflow-x: hidden;
+		overflow-y: auto; 
+		border-right: 2px solid black;
+	}
+}
+
+.nav-sidebar > li {
+	border-bottom: 2px solid black;
+}
+
+.nav-sidebar > .active > a {
+	color: black;
+	background-color: #D8D8D8;
+}
+
+.hidden {
+	display: hidden;
+}
+
+
+
+/*.main {
+	padding: 20px;
+}
+@media (min-width:768px) {
+	.main {
+		padding-right: 40px;
+		padding-left: 40px;
+	}
+}*/
+
+
