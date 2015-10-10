@@ -1,0 +1,1 @@
+The purpose of this repository is to allow is to allow for the storage of the code for homework assignments in CS 5610 Web Development for Fall of 2015. It is being pushed with hello.html and package.json into the public folder.

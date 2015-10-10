@@ -1,0 +1,1 @@
+This is the readme file for HW1. It is being pushed with hello.html and package.json into the public folder.
