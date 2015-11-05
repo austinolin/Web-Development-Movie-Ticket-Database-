@@ -1,0 +1,17 @@
+<div class="col-sm-3 col-md-2 sidebar" ng-controller="SidebarController">
+	<ul class="nav nav-sidebar">
+		<li class="search-area">
+		<form action="#/movies" role="form">
+			<input type="text" class="form-control search-bars" id="movies-search" placeholder="Search Movies">
+			<button type="submit" class="btn btn-primary search-button" id="movies-button">Search</button>
+		</form>
+		<form action="#/theaters" role="form">
+			<input type="text" class="form-control search-bars" id="theaters-search" placeholder="Search Theaters">
+			<button type="submit" class="btn btn-primary search-button" id="theaters-button">Search</button>
+		</form>
+		</li>
+		<li class="nav-choice" ng-class="{'active-navbar' : $location.url().indexOf('home') != -1}"><a href="#/home">Home</a></li>
+		<li class="nav-choice" ng-class="{'active-navbar' : $location.url().indexOf('movies') != -1}"><a href="#/movies">Movies</a></li>
+		<li class="nav-choice" ng-class="{'active-navbar' : $location.url().indexOf('theaters') != -1}"><a href="#/theaters">Theaters</a></li>
+	</ul>
+</div>
