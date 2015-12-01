@@ -27,7 +27,7 @@
 			// Update rootScope user
 			$rootScope.user = user;
 			// Update user information in stored database of users
-			UserService.updateUser(user.id, user)
+			UserService.updateUser(user._id, user)
 		}
 		
 	}

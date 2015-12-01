@@ -15,7 +15,7 @@
 		model.user = user;
 
 		// will get the list of all forms created by the given user
-		FormService.findAllFormsForUser(user.id).then(function(response)
+		FormService.findAllFormsForUser(user._id).then(function(response)
 		{
 			model.forms = response;
 		});
@@ -29,10 +29,10 @@
 		function addForm() {
 			var newForm = {title : model.title};
 			// create a new form
-			FormService.createFormForUser(user.id, newForm).then(function(response)
+			FormService.createFormForUser(user._id, newForm).then(function(response)
 			{
 				// get the new updated list of forms by the user
-				FormService.findAllFormsForUser(user.id).then(function(response)
+				FormService.findAllFormsForUser(user._id).then(function(response)
 				{
 					model.forms = response;
 				});
@@ -48,10 +48,10 @@
 			var originalForm = model.forms[model.formIndex];
 			// update its title
 			originalForm.title = model.title;
-			FormService.updateFormById(originalForm.id, originalForm).then(function(response)
+			FormService.updateFormById(originalForm._id, originalForm).then(function(response)
 			{
 				// get the new updated list of forms by the user
-				FormService.findAllFormsForUser(user.id).then(function(response)
+				FormService.findAllFormsForUser(user._id).then(function(response)
 				{
 					model.forms = response;
 				});
@@ -64,10 +64,10 @@
 		//deletes a form from the array of forms
 		function deleteForm(index) {
 			// delete the form
-			FormService.deleteFormById(model.forms[index].id).then(function(response)
+			FormService.deleteFormById(model.forms[index]._id).then(function(response)
 			{
 				// get the new updated list of forms by the user
-				FormService.findAllFormsForUser(user.id).then(function(response)
+				FormService.findAllFormsForUser(user._id).then(function(response)
 				{
 					model.forms = response;
 				});

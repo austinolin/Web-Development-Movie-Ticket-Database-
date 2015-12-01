@@ -6,7 +6,11 @@ module.exports = function(app, formModel)
 	{
 		// pulls the user's id from the params
 		// finds the forms by that user
-		res.json(formModel.findUserForms(req.params.userId));
+		formModel.findUserForms(req.params.userId).then(function(response)
+		{
+			res.json(response);
+		});
+		// res.json(formModel.findUserForms(req.params.userId));
 	});
 	
 	// returns a form object whose id is equal to the formId path parameter
@@ -14,7 +18,11 @@ module.exports = function(app, formModel)
 	{
 		// pulls the form's id from the params
 		// finds that form and returns it
-		res.json(formModel.findFormById(req.params.formId));
+		formModel.findFormById(req.params.formId).then(function(response)
+		{
+			res.json(response);
+		});
+		//res.json(formModel.findFormById(req.params.formId));
 	});
 	
 	// removes a form object whose id is equal to the formId path parameter
@@ -22,7 +30,11 @@ module.exports = function(app, formModel)
 	{
 		// pulls the form's id from the params
 		// deletes that form from the list of forms
-		res.json(formModel.deleteForm(req.params.formId));
+		formModel.deleteForm(req.params.formId).then(function(response)
+		{
+			res.json(response);
+		});
+		//res.json(formModel.deleteForm(req.params.formId));
 	});
 	
 	// creates a new form whose properties are the same as the form object embedded 
@@ -34,7 +46,11 @@ module.exports = function(app, formModel)
 		// pulls the form information from the body of the request
 		// pulls the user's id from the params
 		// will add that form to the list of forms for that user
-		res.json(formModel.createForm(req.body, req.params.userId));
+		formModel.createForm(req.body, req.params.userId).then(function(response)
+		{
+			res.json(response);
+		});
+		//res.json(formModel.createForm(req.body, req.params.userId));
 	});
 	
 	// updates a form object whose id is equal to the formId path 
@@ -46,7 +62,11 @@ module.exports = function(app, formModel)
 		// pulls the form's id from the params
 		// will replace the form information for the form that matches the
 		// id with the new form
-		res.json(formModel.updateForm(req.params.formId, req.body));
+		formModel.updateForm(req.params.formId, req.body).then(function(response)
+		{
+			res.json(response);
+		});
+		//res.json(formModel.updateForm(req.params.formId, req.body));
 	});
 
 }

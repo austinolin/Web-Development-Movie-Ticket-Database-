@@ -23,9 +23,11 @@
       form.userId = id;
       // POST the form under the user that matches the id
       $http.post("/api/assignment/user/" + id + "/form", form)
-      .success(function(response) {
+      .success(function(response) 
+      {
         deferred.resolve(response);
       });
+
       return deferred.promise;
     }
     
@@ -35,9 +37,11 @@
       var deferred = $q.defer();
       // GET the forms from the user that match the id
       $http.get("/api/assignment/user/" + id + "/form")
-      .success(function(response) {
+      .success(function(response) 
+      {
         deferred.resolve(response);
       });
+
       return deferred.promise;
     }
     
@@ -47,9 +51,11 @@
       var deferred = $q.defer();
       // DELETE the form that matches the given id
       $http.delete("/api/assignment/form/" + id)
-      .success(function(response) {
+      .success(function(response) 
+      {
         deferred.resolve(response);
       });
+
       return deferred.promise;
     }
     
@@ -59,16 +65,19 @@
       var deferred = $q.defer();
       // PUT the new form info into the form that matches the id
       $http.put("/api/assignment/form/" + id, newForm)
-      .success(function(response) {
+      .success(function(response) 
+      {
         deferred.resolve(response);
       });
+      
       return deferred.promise;
     }
 
      // Generates unique id
     function guid() 
     {
-      function s4() {
+      function s4() 
+      {
         return Math.floor((1 + Math.random()) * 0x10000)
         .toString(16)
         .substring(1);

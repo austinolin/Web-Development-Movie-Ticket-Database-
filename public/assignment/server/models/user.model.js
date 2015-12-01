@@ -1,6 +1,11 @@
-var users = require('./user.mock.json');
-module.exports = function(node_uuid) 
+var q = require('q');
+
+module.exports = function(mongoose, db) 
 {
+
+	var UserSchema = require('./user.schema.js')(mongoose);
+	var UserModel = mongoose.model('User', UserSchema);
+
 	var api = {
 		createUser: createUser,
 		findAllUsers: findAllUsers,
@@ -16,18 +21,31 @@ module.exports = function(node_uuid)
 	// and then add it to the array of users
 	function createUser(user) 
 	{
-		// use node-uuid to generate a unique id
-		user.id = node_uuid.v1();
-		// push to list of users
-		users.push(user);
-		// return the updated list of users
-		return users;
+		var deferred = q.defer();
+		// create a new user
+		UserModel.create(user, function(err, result)
+		{
+			// return the list of users
+			UserModel.find(function(err, users)
+			{
+				deferred.resolve(users);
+			});
+		});
+
+		return deferred.promise;
 	}
 	
 	// returns the list of Users
 	function findAllUsers() 
 	{
-		return users;
+		var deferred = q.defer();
+		//  return the list of users
+		UserModel.find(function(err, result)
+		{
+			deferred.resolve(result);
+		});
+
+		return deferred.promise;
 	}
 	
 	// Given a user's id, will iterate through the list of users.
@@ -35,16 +53,14 @@ module.exports = function(node_uuid)
 	// else, returns null
 	function findUserById(id) 
 	{
-		// iterate through the list of users
-		for (var i = 0; i < users.length; i++) {
-			// tests for an id match
-			if (users[i].id == id) {
-				// returns the user
-				return users[i];
-			}
-		}
-		// user not found
-		return null;
+		var deferred = q.defer();
+		// find the user using its id
+		UserModel.find({ _id : id}, function(err, result)
+		{
+			deferred.resolve(result[0]);
+		});
+
+		return deferred.promise;
 	}
 	
 	// given a user's id and the updated version of it,
@@ -53,17 +69,28 @@ module.exports = function(node_uuid)
 	// then return updated list of users
 	function updateUser(id, updatedUser) 
 	{
-		// iterate through list of users
-		for (var i = 0; i < users.length; i++) {
-			// tests for id match
-			if (users[i].id == id) {
-				// updates the user information
-				users[i] = updatedUser;
-				break;
-			}
-		}
-		// return updated user list
-		return users;
+		var deferred = q.defer();
+		// update a user that matches the given id
+		UserModel.update(
+			{ _id : id},
+			{
+				// Update the user's name, username, password, and email
+				firstName: updatedUser.firstName,
+				lastName: updatedUser.lastName,
+				username: updatedUser.username,
+				password: updatedUser.password,
+				email: updatedUser.email 
+			}, 
+			function(err, result)
+			{
+				// return the list of users
+				UserModel.find(function(err, results)
+				{
+					deferred.resolve(results);
+				});
+			});
+
+		return deferred.promise;
 	}
 	
 	// given a user's id, will iterate through the list of users
@@ -71,17 +98,18 @@ module.exports = function(node_uuid)
 	// then return the updated list of users
 	function deleteUser(id) 
 	{
-		// iterate through list of users
-		for (var i = 0; i < users.length; i++) {
-			// tests for id match
-			if (users[i].id == id) {
-				// remove the user from the list
-				users.splice(i, 1);
-				break;
-			}
-		}
-		// return updated user list
-		return users;
+		var deferred = q.defer();
+		// remove the user that matches the id
+		UserModel.remove({ _id : id}, function(err, res)
+		{
+			// return the list of users
+			UserModel.find(function(err, results)
+			{
+				deferred.resolve(results);
+			});
+		});
+
+		return deferred.promise;
 	}
 	
 	// given a username, will iterate through list of users
@@ -89,16 +117,14 @@ module.exports = function(node_uuid)
 	// else returns null
 	function findUserByUsername(username) 
 	{
-		// iterate through list of users
-		for (var i = 0; i < users.length; i++) {
-			// tests if usernames match
-			if (users[i].username == username) {
-				// return user
-				return users[i];
-			}
-		}
-		// user not found
-		return null;
+		var deferred = q.defer();
+		// return the user that matches the username
+		UserModel.find({ username : username}, function(err, res)
+		{
+			deferred.resolve(res[0]);
+		});
+
+		return deferred.promise;
 	}
 	
 	// give the credentials of a user (username, password)
@@ -107,16 +133,18 @@ module.exports = function(node_uuid)
 	// else return null
 	function findUserByCredentials(credentials) 
 	{
-		// iterate through list of users
-		for (var i = 0; i < users.length; i++) {
-			// if the username and password matches the user's
-			if (users[i].username == credentials.username && 
-				users[i].password == credentials.password) {
-				// return user
-				return users[i];
-			}
-		}
-		// user not found 
-		return null;
+		var deferred = q.defer();
+		// return the user that matches the username and password credentials
+		UserModel.find(
+		{ 
+			username : credentials.username, 
+			password : credentials.password
+		},
+			function(err, res)
+			{
+				deferred.resolve(res[0]);
+			});
+
+		return deferred.promise;
 	}
 };

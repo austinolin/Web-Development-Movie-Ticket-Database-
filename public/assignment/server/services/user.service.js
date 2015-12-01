@@ -9,7 +9,12 @@ module.exports = function(app, userModel)
 		// pull user out of the request body
 		// create the user and put it into the array,
 		// then return the array of all users
-		res.json(userModel.createUser(req.body));
+		userModel.createUser(req.body).then(function(response)
+		{
+			res.json(response);
+		});
+		//res.json(userModel.createUser(req.body));
+
 	});
 	
 	// Will find user based on either username and password, just the username,
@@ -26,19 +31,31 @@ module.exports = function(app, userModel)
 				"password":req.query.password
 			};
 			// find the user using the username and password credentials
-			res.json(userModel.findUserByCredentials(userCredentials));
+			userModel.findUserByCredentials(userCredentials).then(function(response)
+			{
+				res.json(response);
+			});
+			//res.json(userModel.findUserByCredentials(userCredentials));
 
 			// tests to see if the request has the username supplied
 		} else if (req.query.username) {
 			// responds with a single user whose username property is equal to the 
 			// username path parameter
 			// finds the user with the given username
-			res.json(userModel.findUserByUsername(req.query.username));
+			userModel.findUserByUsername(req.query.username).then(function(response)
+			{
+				res.json(response);
+			});
+			//res.json(userModel.findUserByUsername(req.query.username));
 
 			// neither username or password supplied, so return all users
 		} else {
 			// responds with an array of all users
-			res.json(userModel.findAllUsers());
+			userModel.findAllUsers().then(function(response)
+			{
+				res.json(response);
+			});
+			//res.json(userModel.findAllUsers());
 		}
 	});
 	
@@ -47,7 +64,11 @@ module.exports = function(app, userModel)
 	{
 		// pull user's id from params
 		// find the user with that id in the array
-		res.json(userModel.findUserById(req.params.id));
+		userModel.findUserById(req.params.id).then(function(response)
+		{
+			res.json(response);
+		});
+		//res.json(userModel.findUserById(req.params.id));
 	});
 	
 	// updates an existing user whose id property is equal to the id path parameter. 
@@ -58,7 +79,11 @@ module.exports = function(app, userModel)
 		// Pulls user information out from request body
 		// pulls user id out from the params
 		// will update the user with that id to match the new user info
-		res.json(userModel.updateUser(req.params.id, req.body));
+		userModel.updateUser(req.params.id, req.body).then(function(response)
+		{
+			res.json(response);
+		});
+		//res.json(userModel.updateUser(req.params.id, req.body));
 	});
 	
 	// removes an existing user whose id property is equal to the id path parameter. 
@@ -67,6 +92,10 @@ module.exports = function(app, userModel)
 	{
 		// pulls user id from the params
 		// will delete the user with that id from the array
-		res.json(userModel.deleteUser(req.params.id));		
+		userModel.deleteUser(req.params.id).then(function(response)
+		{
+			res.json(response);
+		});
+		//res.json(userModel.deleteUser(req.params.id));		
 	});
 }

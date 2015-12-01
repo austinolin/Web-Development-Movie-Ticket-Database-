@@ -28,6 +28,7 @@
       {
         deferred.resolve(response);
       });
+
       return deferred.promise;
     }
 
@@ -37,9 +38,11 @@
       var deferred = $q.defer();
       // GET all the users
       $http.get("/api/assignment/user")
-      .success(function(response) {
+      .success(function(response) 
+      {
         deferred.resolve(response);
       });  
+
       return deferred.promise;
     }
 
@@ -49,9 +52,11 @@
       var deferred = $q.defer();
       // POST the new user
       $http.post("/api/assignment/user", user)
-      .success(function(response) {
+      .success(function(response)
+      {
         deferred.resolve(response);
       });    
+
       return deferred.promise;
     }
 
@@ -61,9 +66,11 @@
       var deferred = $q.defer();
       // DELETE the user that matches the given id
       $http.delete("/api/assignment/user/" + id)
-      .success(function(response) {
+      .success(function(response) 
+      {
         deferred.resolve(response);
       });    
+
       return deferred.promise;
     }
 
@@ -73,16 +80,19 @@
       var deferred = $q.defer();
       // PUT the update user info in the user that matches the id
       $http.put("/api/assignment/user/" + id, updatedUser)
-      .success(function(response){
+      .success(function(response)
+      {
         deferred.resolve(response);
       }); 
+
       return deferred.promise;
     }
 
     // Generates unique id
     function guid() 
     {
-      function s4() {
+      function s4() 
+      {
         return Math.floor((1 + Math.random()) * 0x10000)
         .toString(16)
         .substring(1);

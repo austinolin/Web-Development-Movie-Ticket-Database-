@@ -25,9 +25,11 @@
 			var deferred = $q.defer();		
 			// POST the new field into the given form
 			$http.post("/api/assignment/form/" + id + "/field", field)
-			.success(function(response){
+			.success(function(response)
+			{
 				deferred.resolve(response);
 			});
+
 			return deferred.promise;
 		}
 		
@@ -37,9 +39,11 @@
 			var deferred = $q.defer();
 			// GET the fields from the form that matches the id
 			$http.get("/api/assignment/form/" + id + "/field")
-			.success(function(response) {
+			.success(function(response) 
+			{
 				deferred.resolve(response);
 			});
+
 			return deferred.promise;
 		}
 		
@@ -49,9 +53,11 @@
 			var deferred = $q.defer();
 			// GET the specified field from the specified form
 			$http.get("/api/assignment/form/" + formId + "/field/" + fieldId)
-			.success(function(response){
+			.success(function(response)
+			{
 				deferred.resolve(response);
 			});
+
 			return deferred.promise;
 		}
 		
@@ -61,9 +67,11 @@
 			var deferred = $q.defer();
 			// DELETE the specified field from the specified form
 			$http.delete("/api/assignment/form/" + formId + "/field/" + fieldId)
-			.success(function(response) {
+			.success(function(response) 
+			{
 				deferred.resolve(response);
 			});
+
 			return deferred.promise;
 		}
 		
@@ -74,16 +82,19 @@
 			// PUT the updated field information in the specified field in the
 			// specified form
 			$http.put("/api/assignment/form/" + formId + "/field/" + fieldId, field)
-			.success(function(response) {
+			.success(function(response) 
+			{
 				deferred.resolve(response);
 			});
+
 			return deferred.promise;
 		}	
 
 		// Generates unique id (CREDIT: from Piazza post)
 	    function guid() 
 	    {
-	      function s4() {
+	      function s4() 
+	      {
 	        return Math.floor((1 + Math.random()) * 0x10000)
 	        .toString(16)
 	        .substring(1);

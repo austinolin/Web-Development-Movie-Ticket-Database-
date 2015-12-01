@@ -10,7 +10,7 @@
 		<div class="form-field-border" ng-controller="FieldController">
 			<form class="form-horizontal">
 				<ul class="form-fields">
-					<div ng-repeat="field in model.fields" class="form-field-section" ng-switch="field.type">
+					<div ng-repeat="field in model.fields" class="form-field-section" ng-switch="field.fieldType">
 						<li>
 							<div class="form-group">
 								<label for="{{field.label}}" class="control-label">{{field.label}}</label>

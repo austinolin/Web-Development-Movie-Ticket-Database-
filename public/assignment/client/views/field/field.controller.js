@@ -16,10 +16,12 @@
 		model.addField = addField;
 		model.deleteField = deleteField;
 
+
 		FieldService.getFieldsForForm(formId).then(function(response) 
 		{
 			model.fields = response;
 		});
+
 
 		// given a type for the field, will create a new field
 		// json object and add it to the specified form
@@ -101,7 +103,7 @@
 		function deleteField(field) 
 		{
 			// delete the field from the form using the form id and the field id
-			FieldService.deleteFieldFromForm(formId, model.fields[field].id).then(function(response) 
+			FieldService.deleteFieldFromForm(formId, model.fields[field]._id).then(function(response) 
 			{
 				// get the updated list of fields from the form
 				FieldService.getFieldsForForm(formId).then(function(response) 

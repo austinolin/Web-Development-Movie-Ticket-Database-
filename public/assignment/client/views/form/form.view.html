@@ -38,7 +38,7 @@
 			    <tbody>
 			        <tr ng-repeat="form in model.forms">
 			            <td>
-			            	<a href="#/user/{{model.user.id}}/form/{{form.id}}/fields">{{form.title}}</a>
+			            	<a href="#/user/{{model.user._id}}/form/{{form._id}}/fields">{{form.title}}</a>
 			            </td>
 			            <td>
 			            	<button class="button" class="btn btn-default" aria-label="Remove" ng-click="model.deleteForm($index)">

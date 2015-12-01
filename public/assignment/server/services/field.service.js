@@ -7,7 +7,11 @@ module.exports = function(app, formModel)
 	{
 		// get the form's id from the request params
 		// get all fields in that form
-		res.json(formModel.getFieldsInForm(req.params.formId));
+		formModel.getFieldsInForm(req.params.formId).then(function(response)
+		{
+			res.json(response);
+		});
+		//res.json(formModel.getFieldsInForm(req.params.formId));
 	});
 	
 	// returns a field object whose id is equal to the fieldId path parameter 
@@ -17,7 +21,11 @@ module.exports = function(app, formModel)
 		// get field's id from the params
 		// get form's id from the params
 		// will get that field from the given form
-		res.json(formModel.getFieldInForm(req.params.formId, req.params.fieldId));
+		formModel.getFieldInForm(req.params.formId, req.params.fieldId).then(function(response)
+		{
+			res.json(response);
+		});
+		//res.json(formModel.getFieldInForm(req.params.formId, req.params.fieldId));
 	});
 	
 	// removes a field object whose id is equal to the fieldId path parameter and 
@@ -27,7 +35,11 @@ module.exports = function(app, formModel)
 		// get field id from params
 		// get form id from params
 		// delete that field from the given form
-		res.json(formModel.deleteField(req.params.formId, req.params.fieldId));
+		formModel.deleteField(req.params.formId, req.params.fieldId).then(function(response)
+		{
+			res.json(response);
+		});
+		//res.json(formModel.deleteField(req.params.formId, req.params.fieldId));
 	});
 	
 	// creates a new field whose properties are the same as the field object embedded 
@@ -38,7 +50,11 @@ module.exports = function(app, formModel)
 		// get the field from the request body
 		// get the form id from the params
 		// add the field to the given form
-		res.json(formModel.addField(req.params.formId, req.body));
+		formModel.addField(req.params.formId, req.body).then(function(response)
+		{
+			res.json(response);
+		});
+		//res.json(formModel.addField(req.params.formId, req.body));
 	});
 	
 	// updates a field object whose id is equal to the fieldId path parameter and belonging 
@@ -52,6 +68,9 @@ module.exports = function(app, formModel)
 		// get the form id from the params
 		// replace the field info that matches the field id with the
 		// field object in the given form
-		res.json(formModel.updateField(req.params.formId, req.params.fieldId, req.body));
+		formModel.updateField(req.params.formId, req.params.fieldId, req.body).then(function(response){
+			res.json(response);
+		});
+		//res.json(formModel.updateField(req.params.formId, req.params.fieldId, req.body));
 	});
 }
