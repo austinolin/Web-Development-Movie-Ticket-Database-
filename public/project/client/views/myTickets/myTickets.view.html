@@ -1,0 +1,42 @@
+
+<h1 class="page-header">My Tickets</h1>
+
+<div class="row placeholders">
+	<div class="col-xs-10 col-sm-10 placeholder">
+		<div class="table-responsive">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th data-field="movie">
+							<span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
+							Movie
+						</th>
+						<th data-field="theater">
+							<span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
+							Theater
+						</th>
+						<th data-field="rating">
+							<span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
+							Rating
+						</th>
+						<th data-field="showtime">
+							<span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
+							Showtime
+						</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr ng-repeat="ticket in model.tickets">
+						<td>{{ticket.title}}</td>
+						<td>{{ticket.theatername}}</td>
+						<td>{{ticket.rating}}</td>
+						<td>{{ticket.time}}</td>
+					</tr>
+
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+</div>

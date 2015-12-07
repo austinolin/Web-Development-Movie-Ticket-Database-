@@ -1,0 +1,20 @@
+
+<h1 class="page-header">Welcome to Flandango!</h1>
+
+<div class="row placeholders">
+	<div class="col-xs-10 col-sm-10 placeholder text_justified">
+		<p>
+			We are the #1 resource for movie tickets online. Select to browse either by movie or theater, or you can search for the movie or theater you are looking for.
+		</p>
+	</div>
+	<li class="search-area">
+		<form role="form" >
+			<input type="text" class="form-control search-bars" id="movieName" placeholder="Search Movies" ng-model="model.movieName">
+			<button type="submit" class="btn btn-primary search-button" id="movies-button" ng-click="model.searchMovies()">Search</button>
+		</form>
+		<form role="form">
+			<input type="text" class="form-control search-bars" id="theaterName" placeholder="Search Theaters" ng-model="model.theaterName">
+			<button type="submit" class="btn btn-primary search-button" id="theaters-button" ng-click="model.searchTheaters()">Search</button>
+		</form>
+	</li>
+</div>

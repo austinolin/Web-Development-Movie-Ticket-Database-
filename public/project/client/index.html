@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="FlandangoProject">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>FLANDANGO</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Library scripts for JQuery and Angular -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.0/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.0/angular-route.js"></script>
+
+    <<!-- Scripts for various controllers and .js files -->
+
+    <!--  App and Config -->
+    <script src="app.js"></script>
+    <script src="config.js"></script>
+
+      <!-- Services -->
+    <script src="services/UserService.js"></script>
+    <script src="services/ShowtimeService.js"></script>
+    <script src="services/TheaterService.js"></script>
+    <script src="services/MovieService.js"></script>
+     <script src="services/TicketService.js"></script>
+
+
+     <!-- Controllers -->
+     <script src="views/home/home.controller.js"></script>
+    <script src="views/checkout/checkout.controller.js"></script>
+    <script src="views/header/header.controller.js"></script>
+    <script src="views/login/login.controller.js"></script>
+    <script src="views/movies/movies.controller.js"></script>
+    <script src="views/movieSearch/movieSearch.controller.js"></script>
+    <script src="views/theaterSearch/theaterSearch.controller.js"></script>
+    <script src="views/myTickets/myTickets.controller.js"></script>
+    <script src="views/profile/profile.controller.js"></script>
+    <script src="views/register/register.controller.js"></script>
+    <script src="views/sidebar/sidebar.controller.js"></script>
+    <script src="views/theater/theater.controller.js"></script>
+    <script src="views/theaters/theaters.controller.js"></script>
+
+  </head>
+
+	<body>
+		 <!-- Include the page header -->
+    <div ng-include="'views/header/header.view.html'"></div>
+    <div class="container-fluid">
+      <div class="row">
+        <!-- Include the page sidebar/navbar -->
+        <div ng-include="'views/sidebar/sidebar.view.html'"></div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-view>
+          <!-- Generates content depending on URL -->
+        </div>  
+      </div>
+    </div>
+	</body>
+</html>

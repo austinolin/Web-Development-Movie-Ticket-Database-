@@ -1,0 +1,117 @@
+
+<h1 class="page-header">Theaters</h1>
+
+<h3 class="subtitle">Results</h3>
+
+<div class="row placeholders">
+	<div class="col-xs-10 col-sm-10 placeholder">
+		<div class="table-responsive">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th data-field="theater">
+							<span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>Theater
+						</th>
+						<th data-field="city">
+							<span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
+							City
+						</th>
+						<th data-field="state">
+							<span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
+							State
+						</th>
+						<th data-field="country">
+							<span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
+							Country
+						</th>
+						<th data-field="zip_code">
+							<span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
+							Zip Code
+						</th>
+						<th data-field="action" ng-show="user.isAdmin">
+							<span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
+							Action
+						</th>
+					</tr>
+					<tr ng-show="user.isAdmin">
+						<td>
+							<input type="text" class="form-control" placeholder="Theater" ng-model="model.name">
+						</td>
+						<td>
+							<input type="text" class="form-control" placeholder="City" ng-model="model.city">
+						</td>
+						<td>
+							<input type="text" class="form-control" placeholder="State" ng-model="model.state">
+						</td>
+						<td>
+							<input type="text" class="form-control" placeholder="Country" ng-model="model.country">
+						</td>
+						<td>
+							<input type="text" class="form-control" placeholder="Zip Code" ng-model="model.zipcode">
+						</td>
+						<td>
+							<button class="button" class="btn btn-default" aria-label="Add" ng-click="model.addTheater()">
+								<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+							</button>
+							<button class="button" class="btn btn-default" aria-label="Update" ng-click="model.updateTheater()">
+								<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+							</button>
+						</td>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr ng-repeat="theater in model.theaters">
+						<td><a href="#/theater/{{theater._id}}">{{theater.name}}</a></td>
+						<td>{{theater.city}}</td>
+						<td>{{theater.state}}</td>
+						<td>{{theater.country}}</td>
+						<td>{{theater.zipcode}}</td>
+						<td ng-show="user.isAdmin">
+							<button class="button" class="btn btn-default" aria-label="Remove" ng-click="model.deleteTheater($index)">
+								<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+							</button>
+							<button class="button" class="btn btn-default" aria-label="Edit" ng-click="model.selectTheater($index)">
+								<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+							</button>
+						</td>
+					</tr>
+
+		<!-- 			<tr>
+						<td><a href="#/theater">Sundance Cinema</a></td>
+						<td>Seattle</td>
+						<td>Washington</td>
+						<td>United States</td>
+						<td>98105</td>
+						<td>
+							<button class="button" class="btn btn-default" aria-label="Remove" ng-click="model.deleteTheater($index)">
+								<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+							</button>
+							<button class="button" class="btn btn-default" aria-label="Edit" ng-click="model.selectTheater($index)">
+								<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+							</button>
+						</td>
+					</tr>
+
+					<tr>
+						<td><a href="#/theater">Regal Cinemas</a></td>
+						<td>Lynnwood</td>
+						<td>Washington</td>
+						<td>United States</td>
+						<td>98275</td>
+						<td>
+							<button class="button" class="btn btn-default" aria-label="Remove">
+								<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+							</button>
+							<button class="button" class="btn btn-default" aria-label="Edit">
+								<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+							</button>
+						</td>
+					</tr> -->
+
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+</div>

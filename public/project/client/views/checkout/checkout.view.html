@@ -1,0 +1,52 @@
+
+<h1 class="page-header">Checkout</h1>
+
+
+<h3 class="subtitle">{{model.showtime.movie.title}}</h3>
+<h4 class="subtitle">{{model.theater.name}}</h4>
+<h4 class="subtitle">{{model.showtime.time}}</h4>
+<h4 class="subtitle">{{model.showtime.price}} per ticket</h4>
+
+
+<div class="row placeholders">
+	<div class="col-xs-10 col-sm-10 placeholder">
+		<form class="form-horizontal">
+			<div class="form-group">
+				<label for="name" class="col-sm-12 control-label">Name:</label>
+				<div class="col-sm-8">
+					<input type="text" class="form-control" id="name" placeholder="Name" ng-model="model.name">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="credit_card" class="col-sm-12 control-label">Credit Card:</label>
+				<div class="col-sm-8">
+					<select class="form-control" id="credit_card" ng-model="model.cardType">
+						<option>Visa</option>
+						<option>Mastercard</option>
+						<option>American Express</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="credit_number" class="col-sm-12 control-label">CC Number:</label>
+				<div class="col-sm-8">
+					<input type="text" class="form-control" id="credit_number" placeholder="Credit Card Number" ng-model="model.creditnumber">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="ticket_count" class="col-sm-12 control-label">Number of Tickets:</label>
+				<div class="col-sm-2">
+					<input type="number" class="form-control" id="ticket_count" min="1"  ng-model="model.ticketsBought">
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-10 col-sm-offset-2">
+					<button type="submit" class="btn btn-primary buy-button" ng-click="model.addTicket()">Purchase</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

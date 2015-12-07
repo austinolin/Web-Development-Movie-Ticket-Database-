@@ -1,0 +1,52 @@
+
+<h1 class="page-header">Register</h1>
+
+<div class="row placeholders">
+	<div class="col-xs-10 col-sm-10 placeholder">
+		<form class="form-horizontal">
+			<div class="form-group">
+				<label for="username" class="col-sm-10 control-label"> Username:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="username" placeholder="Username" ng-model="model.username">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="password_login" class="col-sm-10 control-label"> Password:</label>
+				<div class="col-sm-10">
+					<input type="password" class="form-control" id="password_login" placeholder="Password" ng-model="model.password">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="password_verify" class="col-sm-10 control-label"> Verify Password:</label>
+				<div class="col-sm-10">
+					<input type="password" class="form-control" id="password_verify" placeholder="Verify Password" ng-model="model.verify_password">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="email" class="col-sm-10 control-label"> Email:</label>
+				<div class="col-sm-10">
+					<input type="email" class="form-control" id="email" placeholder="Email" ng-model="model.email">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="isAdmin" class="col-sm-12 control-label">Admin:</label>
+				<div class="col-sm-8">
+					<select class="form-control" id="isAdmin" ng-model="model.isAdmin">
+						<option>No</option>
+						<option>Yes</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-10 col-sm-offset-2">
+					<button type="submit" class="btn btn-primary search-button" ng-click="model.register()">Register</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
